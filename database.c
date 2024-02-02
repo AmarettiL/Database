@@ -49,7 +49,7 @@ MetaCommandResult do_meta_command(InputBuffer* input_buffer) {
 
 // Riconosce le parole che sono inserite, come insert e select
 // usiamo strncmp per insert perchè questa parola sarà seguita da un data
-PrepareResult prepapre_statement(InputBuffer* input_buffer, Statement* statement) {
+PrepareResult prepare_statement(InputBuffer* input_buffer, Statement* statement) {
   if (strncmp(input_buffer->buffer, "insert", 6) == 0) {
     statement->type = STATEMENT_INSERT;
     return PREPARE_SUCCESS;
@@ -61,7 +61,7 @@ PrepareResult prepapre_statement(InputBuffer* input_buffer, Statement* statement
   return PREPARE_UNRECOGNIZED_STATEMENT;
 }
 
-void execture_statement(Statement* statement) {
+void execute_statement(Statement* statement) {
   switch (statement->type) {
   case (STATEMENT_INSERT):
     printf("This is where we would do an insert.\n");
